@@ -35,6 +35,7 @@
       type="text/javascript"
       src="scripts/exam/exam-questions-converted.js"
     ></script>
+    <script type="text/javascript" src="scripts/question-sets.js"></script>
     <script type="text/javascript" src="scripts/app.js"></script>
 
     <link rel="stylesheet" href="style/main.css" />
@@ -53,8 +54,25 @@
             id="questionSetSelector"
             class="px-4 py-2 border-2 border-slate-200 rounded-xl bg-white text-slate-700 font-medium focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all cursor-pointer"
           >
-            <option value="assessment">📘 Assessment</option>
-            <option value="exam">📝 Exam</option>
+            <option value="midterm">Průběžný test · P1–P6</option>
+            <option value="second">Druhá část semestru · P7–P12</option>
+            <option value="current">Aktuální témata · P1–P12</option>
+            <option value="all">Všechny otázky · včetně archivu</option>
+            <option value="archive">Starší témata · archiv</option>
+            <optgroup label="Jednotlivé přednášky 2026">
+              <option value="lecture-1">P1 · Úvod a kombinatorické problémy</option>
+              <option value="lecture-2">P2 · P, NP, co-NP a polynomiální hierarchie</option>
+              <option value="lecture-3">P3 · NP-úplnost a NP-těžkost</option>
+              <option value="lecture-4">P4 · Stavový prostor, lokální heuristiky, B&B</option>
+              <option value="lecture-5">P5 · SAT a SMT</option>
+              <option value="lecture-6">P6 · ILP a CSP</option>
+              <option value="lecture-7">P7 · Randomizované algoritmy</option>
+              <option value="lecture-8">P8 · Experimenty a parametrizované heuristiky</option>
+              <option value="lecture-9">P9 · Simulované ochlazování</option>
+              <option value="lecture-10">P10 · Simulovaná evoluce I</option>
+              <option value="lecture-11">P11 · Vícekriteriální a evoluční metody</option>
+              <option value="lecture-12">P12 · Globální metody</option>
+            </optgroup>
           </select>
         </div>
         <span id="questionCount" class="text-sm text-slate-500"></span>
@@ -384,29 +402,17 @@
       // Question set management
       (function () {
         var urlParams = new URLSearchParams(window.location.search);
-        var questionSet = urlParams.get("set") || "assessment";
+        var questionSet = window.kopQuestionSets.canonicalId(urlParams.get("set"));
 
-        // Set selector value and update UI
         var selector = document.getElementById("questionSetSelector");
         var countDisplay = document.getElementById("questionCount");
         var overviewLink = document.getElementById("overviewLink");
 
-        selector.value = questionSet;
-
-        // Update overview link to preserve question set
+        window.kopQuestionSets.prepareSelector(selector, questionSet);
         overviewLink.href = "overview.html?set=" + questionSet;
 
-        // Set the active questions based on selection
-        if (questionSet === "exam") {
-          window.activeQuestions = window.examQuestions || [];
-          countDisplay.textContent =
-            (window.examQuestions ? window.examQuestions.length : 0) +
-            " otázek";
-        } else {
-          window.activeQuestions = window.questions || [];
-          countDisplay.textContent =
-            (window.questions ? window.questions.length : 0) + " otázek";
-        }
+        window.activeQuestions = window.kopQuestionSets.getQuestions(questionSet);
+        countDisplay.textContent = window.activeQuestions.length + " otázek";
 
         // Handle selector change
         selector.addEventListener("change", function () {
@@ -418,7 +424,7 @@
       })();
 
       window.onbeforeunload = function confirmExit() {
-        return "Prerušiť test?";
+        return "Přerušit test?";
       };
     </script>
   </body>

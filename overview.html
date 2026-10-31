@@ -28,6 +28,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script type="text/javascript" src="scripts/questions.js"></script>
     <script type="text/javascript" src="scripts/exam/exam-questions-converted.js"></script>
+    <script type="text/javascript" src="scripts/question-sets.js"></script>
 
     <link rel="stylesheet" href="style/main.css" />
 </head>
@@ -50,8 +51,25 @@
                     <label class="text-slate-600 font-medium">Sada:</label>
                     <select id="questionSetSelector"
                         class="px-3 py-2 border-2 border-slate-200 rounded-xl bg-white text-slate-700 font-medium focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all cursor-pointer text-sm">
-                        <option value="assessment">📘 Assessment</option>
-                        <option value="exam">📝 Exam</option>
+                        <option value="midterm">Průběžný test · P1–P6</option>
+            <option value="second">Druhá část semestru · P7–P12</option>
+            <option value="current">Aktuální témata · P1–P12</option>
+            <option value="all">Všechny otázky · včetně archivu</option>
+            <option value="archive">Starší témata · archiv</option>
+            <optgroup label="Jednotlivé přednášky 2026">
+              <option value="lecture-1">P1 · Úvod a kombinatorické problémy</option>
+              <option value="lecture-2">P2 · P, NP, co-NP a polynomiální hierarchie</option>
+              <option value="lecture-3">P3 · NP-úplnost a NP-těžkost</option>
+              <option value="lecture-4">P4 · Stavový prostor, lokální heuristiky, B&B</option>
+              <option value="lecture-5">P5 · SAT a SMT</option>
+              <option value="lecture-6">P6 · ILP a CSP</option>
+              <option value="lecture-7">P7 · Randomizované algoritmy</option>
+              <option value="lecture-8">P8 · Experimenty a parametrizované heuristiky</option>
+              <option value="lecture-9">P9 · Simulované ochlazování</option>
+              <option value="lecture-10">P10 · Simulovaná evoluce I</option>
+              <option value="lecture-11">P11 · Vícekriteriální a evoluční metody</option>
+              <option value="lecture-12">P12 · Globální metody</option>
+            </optgroup>
                     </select>
                 </div>
                 <a id="testerLink" href="index.html"
@@ -232,12 +250,8 @@
             function ($scope, $sce) {
                 // Get question set from URL parameter
                 var urlParams = new URLSearchParams(window.location.search);
-                var questionSet = urlParams.get('set') || 'assessment';
-
-                // Select the appropriate question source
-                var questionsSource = questionSet === 'exam'
-                    ? (window.examQuestions || [])
-                    : (window.questions || []);
+                var questionSet = window.kopQuestionSets.canonicalId(urlParams.get('set'));
+                var questionsSource = window.kopQuestionSets.getQuestions(questionSet);
 
                 // Initialize data from questions array
                 $scope.allQuestions = questionsSource.map(function (q, index) {
@@ -351,14 +365,12 @@
         // Question set selector management
         (function () {
             var urlParams = new URLSearchParams(window.location.search);
-            var questionSet = urlParams.get('set') || 'assessment';
-
-            // Set selector value
+            var questionSet = window.kopQuestionSets.canonicalId(urlParams.get('set'));
             var selector = document.getElementById('questionSetSelector');
             var testerLink = document.getElementById('testerLink');
             var testerLinkFooter = document.getElementById('testerLinkFooter');
 
-            selector.value = questionSet;
+            window.kopQuestionSets.prepareSelector(selector, questionSet);
 
             // Update tester links to preserve question set
             testerLink.href = 'index.html?set=' + questionSet;
