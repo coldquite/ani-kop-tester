@@ -1,9 +1,18 @@
-# KOP Tester
+# ANI-KOP Tester
 
-Forked from: https://gitlab.com/novacto3/paa-tester-2
+Webová aplikace pro procvičování otázek z předmětu ANI-KOP.
 
----
+**Aktuální repozitář:** [coldquite/ani-kop-tester](https://github.com/coldquite/ani-kop-tester)
 
-PAA Test 2.0
+## Použití
 
-Změny, úpravy... vše vítáno. Kód je narychlo uplácanej... (učím se na paa)
+Otevřete `index.html` a vyberte sadu otázek (Assessment nebo Exam). Přehled otázek je dostupný v `overview.html`.
+
+Aplikace je statická a lze ji nasadit pomocí GitHub Pages.
+
+## Struktura projektu
+
+- `index.html` – procvičování otázek
+- `overview.html` – přehled otázek
+- `scripts/questions.js` – otázky pro sadu Assessment
+- `scripts/exam/exam-questions-converted.js` – otázky pro sadu Exam
