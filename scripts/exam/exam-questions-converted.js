@@ -26,7 +26,7 @@ examQuestions.push({
     "question": "Open Question - Problém kvadratického přiřazení",
     "image": "assets/exam/kvadraticke-prirazeni-2025-01-21.png",
     "answer": `
-9/10 bodov:
+9/10 bodů:
 
 Konfiguracni promenne
 jedinec bude definovan vektorem o velikosti n, kde na i-tem indexu bude k_i modul z K, hodnoty, ktere budeme prirazovat z P, je treba si ale pohlidat, ze kazda hodnota z P je pouzita prave jednou abychom splnili podminku proste prirazeni, obor hodnot jsou vsechny permutace techto vektoru rozlozeni, ktere splnuji zminenou podminku
@@ -111,7 +111,7 @@ examQuestions.push({
     "question": "Open Question - Problém minimálního regulárního výrazu",
     "image": "assets/exam/minimalni-regularni-vyraz-2025-02-14.png",
     "answer": `
-9/10 bodov:
+9/10 bodů:
 
 **Konfigurační proměnné:**
 Ohodnocení konfiguračních proměnných nám musí jednoznačně určit řešení - regulární výraz s danými operátory. Tedy konfigurační proměnné musí dokázat nějak reprezentovat výraz - strom.
@@ -134,7 +134,7 @@ Použil bych operátor, který vezme nějakou část výrazu (podstrom) a nahrad
 **Generování počáteční generace:**
 Jako počáteční generaci bych zvolil regulární výrazy, které generují pouze jednotlivé znaky abecedy. Jejich postupným křížením postupně vytvoříme celý stavový prostor.
 
-**Komentár opravujícího**
+**Komentář opravujícího**
 Obor konf. proměnných jsou stromy zmíněných vlastností. Abeceda a reg. operátory jsou jen ohodnocení uzlů.
 `
 });
@@ -150,7 +150,7 @@ Vektor o délce k (počet párů), kde oborem hodnot vektoru jsou celá čísla 
 Platí zde omezení, že součet všech toků (hodnot ve vektoru) nesmí přesáhnout kapacitu žádné hrany na cestě mezi páry s_j a t_j.
 
 Druh simulované evoluce
-Pro tento problém bych zvolil genetický algoritmus, z dúvodu, že pracujeme s vektorem s celočíselným oborem a diky tomu ho Ize jednoduše použít.
+Pro tento problém bych zvolil genetický algoritmus, z důvodu, že pracujeme s vektorem s celočíselným oborem a diky tomu ho Ize jednoduše použít.
 
 Reprezentace individua
 Individuum je reprezentováno ohodnocením konfiguračních proměnných - ohodnocením vektoru popsáného v bodě 1. Jednoduše získám zdatnost individua - součet toků ve vektoru.
@@ -185,13 +185,13 @@ Ohodnocení - cost funkce - daného algoritmu je daná počtem 1 ve vectoru - me
 - povolujeme jistou míru relaxace
 
 Vlastnosti stavového prostoru
-Toto řešení povoluje i nevalidní stavy, protože v posloupnosti múže být v nějaké konfiguraci číslo, které nelze vytvořit sečtením předcházejících prvků v posloupnosti - tyto proměnné musíme penalizovat.
+Toto řešení povoluje i nevalidní stavy, protože v posloupnosti může být v nějaké konfiguraci číslo, které nelze vytvořit sečtením předcházejících prvků v posloupnosti - tyto proměnné musíme penalizovat.
 Ohodnocení (cost) a přesuny viz předešlá sekce
 Dalo by se to obejit asi možností, kde bysme generovali proměnné postupně z nulového vektoru jen kombinacemi proměnných již obsáhnuté daným vektorem, pak by přechody mezi stavy byly vždy validní a nemuselo by se relaxoval
 
 Počáteční řešení
 Triviální by byla konfigurace definovaná vectorem plným 0 až na první pozici, kde by byla 1 (dané prvním bodem v řeseni)
-Dalsí možnost by byla nahodné ohodnocení daného vektoru, které müze vygenerovat i nevaldiní resení. Nicméné stavový prostor je silné souvislý, takže by nemel mit na resení vliv.
+Dalsí možnost by byla nahodné ohodnocení daného vektoru, které může vygenerovat i nevaldiní resení. Nicméné stavový prostor je silné souvislý, takže by nemel mit na resení vliv.
 `
 });
 
@@ -837,8 +837,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "Pokud je počáteční teplota u SA (simulované ochlazování) malá, o. má algoritmus tendenci padat do lokálního minima",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 1,
@@ -851,8 +851,8 @@ examQuestions.push({
     "question": "Jaká strategie se používá pro výběr souseda u simulovaného ochlazování?",
     "answers": {
         "1": "pouze nejlepší",
-        "2": "prvé zlepšení",
-        "3": "prvé zlepšení nebo přípustné zhoršení",
+        "2": "první zlepšení",
+        "3": "první zlepšení nebo přípustné zhoršení",
         "4": "nejlepší nejdříve"
     },
     "correct": {
@@ -867,8 +867,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "Pokud je u SA nízká hodnota (délka) equilibria a neupdatuje se dynamicky, skončí heuristika rychle v lokálním minimu",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 1,
@@ -895,8 +895,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "Pokud je koeficient ochlazování u SA velmi nízký, skončí heuristika rychle v lokálním minimu?",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 1,
@@ -908,8 +908,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "Je u SA při rychlejším ochlazování vyšší pravděpodobnost, že skončíme v lokálním minimu?",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 1,
@@ -1228,8 +1228,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "Snížením selekčního tlaku u genetického algoritmu se zvyšuje diverzifikace",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 1,
@@ -1241,8 +1241,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "Mutace snižuje diverzifikaci",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 0,
@@ -1254,8 +1254,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "Když zvýšíme selekční tlak, zvýší se intenzifikace",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 1,
@@ -1267,8 +1267,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "Když zvýšíme počáteční teplotu, skončí algoritmus rychle v lokálním extrému?",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 0,
@@ -1280,8 +1280,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "Pokud zvýšíme selekční tlak, zvýší se diverzifikace",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 0,
@@ -1293,8 +1293,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "Zvyšuje se mutací intenzifikace",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 0,
@@ -1349,8 +1349,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "Zvětší se zvětšením populace diverzita",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 1,
@@ -1362,8 +1362,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "Zvětší se zvětšením mutace diverzita",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 1,
@@ -1375,8 +1375,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "Zvýší snížení selekčního tlaku diverzitu",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 1,
@@ -1388,8 +1388,8 @@ examQuestions.push({
 examQuestions.push({
     "question": "GA, vybíráme turnajem. Když turnaj zmenšíme, zvýší se intenzifikace",
     "answers": {
-        "1": "Áno (True)",
-        "2": "Nie (False)"
+        "1": "Ano (True)",
+        "2": "Ne (False)"
     },
     "correct": {
         "1": 0,
@@ -1464,7 +1464,7 @@ examQuestions.push({
     "question": "Genetický algoritmus tvoři novou generaci stylem µ + λ, tj. ke generaci o µ jedincích se přidá λ nových a z celku se vybere opět µ nejlepších jedinců. Pro µ = λ = 1 je tento algoritmus vlastně:",
     "answers": {
         "1": "metodou nejlepší nejdříve",
-        "2": "metodou prvé zlepšení",
+        "2": "metodou první zlepšení",
         "3": "náhodnou procházkou",
     },
     "correct": {
@@ -1472,7 +1472,7 @@ examQuestions.push({
         "2": 1,
         "3": 0
     },
-    "aiNote": "Při µ=λ=1 máme v každém kroku právě jednoho „rodiče“ a vytvoří se jeden potomek; z dvojice {rodič, potomek} se ponechá lepší. To je přesně lokální iterativní heuristika typu „prvé zlepšení/přípustné zlepšení“ (ve smyslu: přijmi tah, pokud zlepší). Není to „nejlepší nejdříve“ (to vybírá nejlepší ze širší množiny otevřených stavů) ani náhodná procházka (ta by občas přijímala i horší stav)."
+    "aiNote": "Při µ=λ=1 máme v každém kroku právě jednoho „rodiče“ a vytvoří se jeden potomek; z dvojice {rodič, potomek} se ponechá lepší. To je přesně lokální iterativní heuristika typu „první zlepšení/přípustné zlepšení“ (ve smyslu: přijmi tah, pokud zlepší). Není to „nejlepší nejdříve“ (to vybírá nejlepší ze širší množiny otevřených stavů) ani náhodná procházka (ta by občas přijímala i horší stav)."
 });
 
 examQuestions.push({
@@ -1487,7 +1487,7 @@ examQuestions.push({
         "2": 1,
         "3": 0
     },
-    "note": "Odpoveď v testeri nie je overená Moodle testom"
+    "note": "Odpověď v testeru není ověřena testem v Moodle"
 });
 
 examQuestions.push({
@@ -1565,27 +1565,25 @@ examQuestions.push({
     "answer": `
 8/10 odpověď:   
 
-**Konfiguračné premenné**
-Konfiguračné premenné budú v tomto prípade v tvare binárneho stromu (vrcholy a hrany), kde rozlisujeme lavého a pravého potomka (aby sme vedeli poskladat finálny retazec v spravnom
-poradí). Ciže obor hodnot jsou jednotlivé stromy zložené z vnútorných vrcholov, terminálov alebo retazcov terminálov v listoch. Neterminály výslednej gramatiky vieme dohladat porovnaním
-podstromov v jednotlivých vnútorných vrcholoch (pomenuvávame postupne A, B, C...; v koreni je počiatočný neterminál S. Listy s rovnakými retazcami budú určené rovnakým neterminálom).
+**Konfigurační proměnné**
+Konfigurační proměnné budou v tomto případě reprezentovány binárním stromem (vrcholy a hranami), v němž rozlišujeme levého a pravého potomka, abychom mohli sestavit výsledný řetězec ve správném pořadí. Oborem hodnot jsou jednotlivé stromy složené z vnitřních vrcholů, terminálů nebo řetězců terminálů v listech. Neterminály výsledné gramatiky můžeme dohledat porovnáním podstromů v jednotlivých vnitřních vrcholech (pojmenováváme je postupně A, B, C…; v kořeni je počáteční neterminál S. Listy se stejnými řetězci budou označeny stejným neterminálem).
 
-**Druh simlulované evoluce**
-Keďže operujeme nad stromom, využijeme Genetické Programovanie. To je vhodné na tento typ rerpezentácie, kedže pracuje nad stromovou reprezentáciou.
+**Druh simulované evoluce**
+Protože pracujeme se stromem, využijeme genetické programování. To je vhodné pro tento typ reprezentace, protože pracuje se stromovou strukturou.
 
 **Reprezentace individua**
-Individuum bude konkrétny strom - vrcholy a hrany medzi nimi.
+Individuum bude konkrétní strom – vrcholy a hrany mezi nimi.
 
 **Genetické operátory**
-Mutace (unárny operátor) - rozdelenie retazca na dva potomky alebo spojenie dvoch listov (potomkov) do retazca (ich rodič pri rozdelení je prázdny node); pridanie alebo odobranie terminálu (z abecedy) do/z listu. Takáto volba vytvorí spojity priestor prehladávania a dovolí nám začat aj s prazdnym retazcom.
-Krizeni (binárny operátor) - vymenenie podstromu dvoch individuí.
+Mutace (unární operátor) – rozdělení řetězce na dva potomky nebo spojení dvou listů (potomků) do řetězce (jejich rodič je při rozdělení prázdný uzel); přidání nebo odebrání terminálu z abecedy do listu či z listu. Taková volba vytvoří souvislý prostor prohledávání a umožní nám začít i s prázdným řetězcem.
+Křížení (binární operátor) – výměna podstromů dvou individuí.
 
-Pri takýchto operátoroch môžeme mat aj neplatné riešenia; toto budeme musiet zohladňovat pri výpočtu zdatnosti.
+Při použití těchto operátorů mohou vznikat i neplatná řešení; to musíme zohlednit při výpočtu zdatnosti.
 
-**Generovaní pocateční generace**
-Môžeme začať s prázdnym retazcom alebo môžeme začať s finalnym retazcom v koreni.
+**Generování počáteční generace**
+Můžeme začít s prázdným řetězcem nebo s výsledným řetězcem v kořeni.
 
-**Komentár opravujúceho**
+**Komentář opravujícího**
 Hledáte gramatiku, ne řetězec
 `
 });
