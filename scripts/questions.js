@@ -1593,3 +1593,16 @@ questions.push({
     },
     "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 32; ID CSP-01. PDF s. 32, správné B,C."
 });
+
+// Ověřené nové úlohy z PDF exportu FigJam (obrázky 72–112).
+questions.push({
+    question: "Je dána rozhodovací verze problému obchodního cestujícího: Existuje okruh procházející každé město právě jednou o celkové délce nejvýše K? a) Navrhněte konfigurační proměnné. b) Uveďte omezení. c) Dokažte, že problém patří do NP.",
+    answer: "a) Konfigurací může být permutace n měst π=(π₁,…,πₙ); pořadí udává návštěvy měst a návrat z πₙ do π₁ uzavírá okruh.<br>b) Každé město je v permutaci právě jednou; pro každou následnou dvojici musí být dovoleno použít hranu (není-li graf úplný). Součet délek n hran uzavřeného okruhu musí být ≤ K.<br>c) Certifikátem je pořadí n měst. Deterministický ověřovač v polynomiálním čase zkontroluje, že jde o permutaci všech měst, že existují použité hrany a že součet jejich délek nepřekračuje K. Velikost certifikátu je polynomiální v délce vstupu; rozhodovací TSP tedy patří do NP.",
+    note: "FigJam obrázek 86 (PDF export NI-KOP zápočet (Copy) (1).pdf, str. 1). A16/A18 obsahují pouze formulaci rozhodovacího TSP; A22 řeší NPO. Nová trojdílná úloha požaduje konkrétní důkaz členství do NP."
+});
+
+questions.push({
+    question: "Zformulujte NP-těžkou konstruktivní optimalizační verzi CNF-SAT a ukažte, proč je NP-těžká, jestliže rozhodovací CNF-SAT je NP-úplný.",
+    answer: "Příklad: MAX-SAT. Vstupem je formule F v CNF s m klauzulemi. Hledáme pravdivostní ohodnocení proměnných, které maximalizuje počet splněných klauzulí; každé ohodnocení je přípustné. Kdybychom měli polynomiální exaktní optimalizační algoritmus pro MAX-SAT, rozhodneme libovolnou instanci CNF-SAT pomocí testu, zda optimální počet splněných klauzulí je právě m. To platí právě tehdy, když je F splnitelná. CNF-SAT se tak redukuje na exaktní optimalizační MAX-SAT; tato konstruktivní optimalizační úloha je NP-těžká.<br>Poznámka: Jinou úlohou je Max-Ones-SAT, kde mezi splňujícími ohodnoceními maximalizujeme počet jedniček. V případě nesplnitelné formule nemusí existovat přípustná konfigurace. Obě varianty nelze zaměňovat.",
+    note: "FigJam obrázky 90 (MAX-SAT, správná vzorová odpověď) a 98 (alternativní studentská odpověď Max-Ones-SAT). PDF export NI-KOP zápočet (Copy) (1).pdf, str. 1. V původním testeru samostatná optimalizační verze CNF-SAT chyběla."
+});
