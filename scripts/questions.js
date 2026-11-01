@@ -840,3 +840,756 @@ questions.push({
     answer: "Pro každý vrchol v∈V zavedeme bit x_v∈{0,1}; hodnota 1 znamená, že vrchol vybereme. Omezení: Σ_v x_v ≥ K a pro každé dva různé nesousední vrcholy u,v nesmí současně platit x_u=x_v=1. Certifikátem je bitový vektor délky |V|. Ověření zahrnuje počet vybraných vrcholů a kontrolu sousednosti všech vybraných dvojic, nejvýše O(|V|²) kontrol, tedy polynomiálně. Tím dokazujeme CLIQUE∈NP; NP-těžkost se dokazuje samostatnou redukcí.",
     note: "FigJam: obrázky 53 (uzel 2:216) a 63 (uzel 2:264). Dvě vyobrazení stejné úlohy; odpověď zpřesňuje požadavek velikosti na alespoň K."
 });
+
+// Úlohy doplněné z NI-KOP uzavřené otázky.pdf (2022–2024 / starší testy).
+// Témata Tabu nejsou v osnově 2026: záměrně nejsou přiřazena k přednáškám.
+
+questions.push({
+    "question": "Dynamické programování může:",
+    "answers": {
+        "1": "uváznout v lokálním minimu",
+        "2": "potřebovat velikost paměti, kterou nelze odvodit jen z velikosti instance",
+        "3": "potřebovat paměť o velikosti omezené polynomem ve velikosti instance",
+        "4": "divergovat"
+    },
+    "correct": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "4": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 5; ID DP-01. Klíč podle tučného zvýraznění v dokumentu; tvrzení o paměti neznamená, že DP vždy vyžaduje superpolynomiální prostor."
+});
+
+questions.push({
+    "question": "DP řeší grafový problém: podinstance se vybírají podle (p,q), kde p je uzel, q hrana; musí se spočítat všechny. Dekompozice a kompozice trvá O(n). Co platí?",
+    "answers": {
+        "1": "Čas má v nejhorším případě horní mez O(n⁴) při O(n³) podinstancích a práci O(n) na podinstanci.",
+        "2": "Celková složitost je nejvýše O(n³).",
+        "3": "Algoritmus je nutně pseudopolynomiální.",
+        "4": "Jde o globální metodu.",
+        "5": "Bez úspory paměti může tabulka obsahovat O(n³) podinstancí."
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 1,
+        "5": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 5; ID DP-02. Zdroj označuje A,D,E; n značí počet uzlů, počet hran je nejvýše O(n²). Původní A říká 'nejméně se čtvrtou mocninou', což bez dodatečných předpokladů neplyne; zde je tvrzení formulováno jako horní mez."
+});
+
+questions.push({
+    "question": "DP pro graf: klíč (p,q), index uzlu a hrany, konstantní dekompozice a kompozice, potřeba spočítat všechny podinstance. Co platí?",
+    "answers": {
+        "1": "Musí mít exponenciální čas.",
+        "2": "Nutně je pseudopolynomiální.",
+        "3": "Počet položek a čas lze omezit O(n³).",
+        "4": "Bez využití vrstev lze paměť omezit O(n³)."
+    },
+    "correct": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 5; ID DP-03. O(n) uzlů krát O(n²) hran."
+});
+
+questions.push({
+    "question": "DP používá jako klíč k-tici binárních proměnných, kde k=log₂ N a N je délka vstupu. Každá podinstance se řeší jednou, dekompozice i kompozice jsou konstantní. Co platí?",
+    "answers": {
+        "1": "Počet podinstancí je O(N).",
+        "2": "Algoritmus je nutně pseudopolynomiální.",
+        "3": "Algoritmus má polynomiální čas.",
+        "4": "DP při správné dekompozici poskytuje exaktní řešení."
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 1,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 6; ID DP-04. V PDF jsou tučně A,C,D."
+});
+
+questions.push({
+    "question": "DP používá klíč tvořený N binárními proměnnými, kde N je velikost vstupu, a může potřebovat všechny podinstance. Jak se mění počet stavů?",
+    "answers": {
+        "1": "Nejvýše O(N).",
+        "2": "Může být až 2^N.",
+        "3": "Vždy je O(N²).",
+        "4": "Algoritmus je automaticky lokální heuristikou."
+    },
+    "correct": {
+        "1": 0,
+        "2": 1,
+        "3": 0,
+        "4": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 6; ID DP-05. Zdroj na s. 6 nemá vyznačenou odpověď; 2^N plyne z počtu ohodnocení N bitů (matematické doplnění)."
+});
+
+questions.push({
+    "question": "DP používá klíč (p,q), kde p,q∈{0,…,n}; každá podinstance se zpracuje jednou s konstantní prací. Jaká je složitost vyhodnocení celé tabulky?",
+    "answers": {
+        "1": "O(2^n)",
+        "2": "O(n³)",
+        "3": "O(n)",
+        "4": "O(n²)"
+    },
+    "correct": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 6; ID DP-06. Počet dvojic je (n+1)²; v originálu na s. 6–7 je jako správné označeno, že metoda je polynomiální."
+});
+
+questions.push({
+    "question": "DP na permutačním problému používá jako klíč libovolnou podmnožinu n prvků. Existují instance, kde se vypočte všech 2^n podinstancí; cena jedné je Θ(n²). Co platí?",
+    "answers": {
+        "1": "Čas roste alespoň exponenciálně.",
+        "2": "Algoritmus je nutně pseudopolynomiální.",
+        "3": "Algoritmus je polynomiální.",
+        "4": "Horní mez celkového času je O(n²·2^n)."
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 7; ID DP-07. PDF str. 7, původní správné možnosti A,D."
+});
+
+questions.push({
+    "question": "DP používá jako klíč libovolnou podmnožinu n prvků a vypočítá všechny podinstance s prací Θ(n) na podinstanci. Co lze tvrdit?",
+    "answers": {
+        "1": "Počet podinstancí je O(n²).",
+        "2": "Čas je Θ(n·2^n).",
+        "3": "Jde o polynomiální algoritmus.",
+        "4": "Počet podinstancí je 2^n."
+    },
+    "correct": {
+        "1": 0,
+        "2": 1,
+        "3": 0,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 7; ID DP-08. Původní otázka na s. 7 neobsahovala spolehlivě vyznačený klíč; výsledek doplněn matematickým výpočtem."
+});
+
+questions.push({
+    "question": "DP vybírá optimální podmnožinu n prvků a musí vypočítat výsledky pro všechny podmnožiny. Co platí o počtu podinstancí?",
+    "answers": {
+        "1": "Je exponenciální, totiž 2^n.",
+        "2": "Je kvadratický.",
+        "3": "Je lineární.",
+        "4": "Je polynomiální."
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 7; ID DP-09. Odpovídá příkladu na s. 7."
+});
+
+questions.push({
+    "question": "DP pro graf má podinstance označené libovolnými podmnožinami n uzlů a v některých instancích musí vypočítat všechny. Jaká metoda to je?",
+    "answers": {
+        "1": "Globální metoda.",
+        "2": "Z definice pseudopolynomiální.",
+        "3": "Nutně lineární.",
+        "4": "Nutně polynomiální."
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 8; ID DP-10. V PDF je tučně A; výpočet všech 2^n podmnožin vylučuje polynomiální horní mez tohoto postupu."
+});
+
+questions.push({
+    "question": "DP pro graf zpracovává všechny podmnožiny n uzlů, a práci potřebnou pro každou podinstanci lze provést v O(1). Jaká je celková časová složitost?",
+    "answers": {
+        "1": "O(n)",
+        "2": "O(n²)",
+        "3": "O(n³)",
+        "4": "Θ(2^n)"
+    },
+    "correct": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 8; ID DP-11. Přesná matematická interpretace s. 8."
+});
+
+questions.push({
+    "question": "Která tvrzení o dynamickém programování jsou správná?",
+    "answers": {
+        "1": "Vždy dává jen suboptimální řešení.",
+        "2": "Vždy řeší každý problém z NP v polynomiálním čase.",
+        "3": "Některé problémy řeší v polynomiálním čase.",
+        "4": "Typicky používá přesnou či čistou dekompozici a opakované využití podvýsledků."
+    },
+    "correct": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 8; ID DP-12. Podle tučných položek na s. 8; formulace 4 doplněna o charakteristickou paměť."
+});
+
+questions.push({
+    "question": "Dynamické programování obecně:",
+    "answers": {
+        "1": "může být exaktní metodou",
+        "2": "zaručuje polynomiální čas bez dalších podmínek",
+        "3": "je vždy aproximační",
+        "4": "využívá dekompozici problému"
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 8; ID DP-13. Podle tučných odpovědí na s. 8."
+});
+
+questions.push({
+    "question": "Pro některé problémy je dynamické programování:",
+    "answers": {
+        "1": "vždy lokální metodou",
+        "2": "pouze přibližnou dekompozicí",
+        "3": "nutně suboptimální",
+        "4": "pseudopolynomiální"
+    },
+    "correct": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 8; ID DP-14. Podle závěru s. 8."
+});
+
+questions.push({
+    "question": "DP musí vyhodnotit všechny podmnožiny n-prvkové množiny (bez možnosti obejít tento krok). Co z toho plyne?",
+    "answers": {
+        "1": "Počet podinstancí je exponenciální.",
+        "2": "Je zaručena pseudopolynomiální složitost.",
+        "3": "Je polynomiální.",
+        "4": "Jde o globální metodu."
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 9; ID DP-15. Zdroj s. 9. Všech 2^n podmnožin."
+});
+
+questions.push({
+    "question": "DP pro graf používá klíč (p,q), p je index uzlu a q index hrany. Kolik různých klíčů může být při n uzlech?",
+    "answers": {
+        "1": "Nejvýše O(n³).",
+        "2": "Nejvýše O(n).",
+        "3": "Vždy pseudopolynomiálně mnoho.",
+        "4": "Jde o globální metodu."
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 9; ID DP-16. Nejvýše n·O(n²)=O(n³); v PDF na s. 9 je A,D."
+});
+
+questions.push({
+    "question": "DP používá podinstance tvořené prvními m uzly grafu na n vrcholech; pro každý stupeň má kompozice i dekompozice dolní mez Ω(n). Co plyne pro celý výpočet všech stupňů?",
+    "answers": {
+        "1": "Nutně horní mez O(n³).",
+        "2": "Dolní mez Ω(n²).",
+        "3": "Vždy lineární složitost.",
+        "4": "Vždy exponenciální složitost."
+    },
+    "correct": {
+        "1": 0,
+        "2": 1,
+        "3": 0,
+        "4": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 9; ID DP-17. Přesná formulace dolní meze na základě zdroje s. 9: n stupňů × Ω(n) práce."
+});
+
+questions.push({
+    "question": "DP řeší pro každé n pouze Θ(log P) podinstancí s konstantní kompozicí a dekompozicí. Která časová mez vzhledem k délce binárního zápisu P je přirozená?",
+    "answers": {
+        "1": "Exponenciální podle log P.",
+        "2": "Θ(n·P).",
+        "3": "Kubická podle P.",
+        "4": "O(n·log P), tedy polynomiální."
+    },
+    "correct": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 9; ID DP-18. Podle zdroje s. 9 (D); pokud počet stupňů n odpovídá velikosti vstupu."
+});
+
+questions.push({
+    "question": "DP postupně zpracovává všech m hran grafu; každá hrana má celočíselnou váhu do M a práce na jednom kroku je Θ(log M). Co platí?",
+    "answers": {
+        "1": "Nutně lineární čas vzhledem k bitové velikosti vstupu.",
+        "2": "Nutně exponenciální čas.",
+        "3": "Čas O(m·log M) je polynomiální vůči binárnímu zápisu instance.",
+        "4": "Nutně pseudopolynomiální čas."
+    },
+    "correct": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 9; ID DP-19. S. 9–10, tučně je polynomiální čas."
+});
+
+questions.push({
+    "question": "Globální rekurzivní metoda na grafu rozloží instanci o n uzlech na dvě podinstance velikosti n/2; dekompozice je O(n), kompozice O(1). Co platí?",
+    "answers": {
+        "1": "Musí vždy nalézt optimální řešení bez ohledu na povahu dekompozice.",
+        "2": "Časová složitost je O(n²).",
+        "3": "Čas je alespoň lineární.",
+        "4": "Zaručeně jde o pseudopolynomiální algoritmus.",
+        "5": "Má polynomiální čas."
+    },
+    "correct": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "4": 0,
+        "5": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 25; ID GLOB-01. S. 25; T(n)=2T(n/2)+O(n)=O(n log n). Původní F je totéž co zde 5."
+});
+
+questions.push({
+    "question": "Globální metoda s přesnou dekompozicí vytvoří z velikosti n dvě podinstance velikosti n−1, kompozice i dekompozice mají konstantní cenu. Jaký je vývoj počtu rekurzivních volání při přímé rekurzi?",
+    "answers": {
+        "1": "Θ(n)",
+        "2": "Θ(n²)",
+        "3": "Θ(2^n)",
+        "4": "Θ(log n)"
+    },
+    "correct": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 25; ID GLOB-02. S. 25, otázka bez vyznačených odpovědí; odvozeno z T(n)=2T(n−1)+O(1). Z toho samotného neplyne, že memoizace zaručí polynomiální čas."
+});
+
+questions.push({
+    "question": "Globální metoda rozděluje instanci grafu a celého čísla M na poloviny uzlů, cena dekompozice O(n·log M). Která tvrzení platí vzhledem k bitové délce vstupu?",
+    "answers": {
+        "1": "Dekompozici lze provést v polynomiálním čase.",
+        "2": "Strom rekurze při dělení na poloviny má O(N) podinstancí/uzlů, kde N je počet vrcholů grafu.",
+        "3": "Složitost je nutně pseudopolynomiální.",
+        "4": "Dynamické programování je nutně pseudopolynomiální."
+    },
+    "correct": {
+        "1": 1,
+        "2": 1,
+        "3": 0,
+        "4": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 25; ID GLOB-03. S. 25, tučně A,B. O(N) jako počet uzlů stromu při zjednodušeném půlení (přesně záleží na stop podmínce)."
+});
+
+questions.push({
+    "question": "Jaká tvrzení o globálních metodách a dekompozici platí?",
+    "answers": {
+        "1": "Všechny globální metody vždy dávají exaktní optimum.",
+        "2": "Přibližná dekompozice vždy dává exaktní řešení.",
+        "3": "Čistá dekompozice může zachovat exaktnost.",
+        "4": "Přesná dekompozice může zachovat exaktnost.",
+        "5": "Globální metody používají rekurzivní formulaci."
+    },
+    "correct": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 1,
+        "5": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 25; ID GLOB-04. PDF s. 25, tučně C,D,E. Slovo 'může' respektuje potřebu korektní kompozice."
+});
+
+questions.push({
+    "question": "Co lze obecně tvrdit o globálních metodách?",
+    "answers": {
+        "1": "Jsou založeny na povinném explicitním prohledávání každého stavu.",
+        "2": "Vždy jsou polynomiální pro NP-těžké problémy.",
+        "3": "Základem je dekompozice problému.",
+        "4": "Často mají rekurzivní formulaci."
+    },
+    "correct": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 26; ID GLOB-05. PDF s. 25–26, zdroj označuje D,E; není automaticky zaručen polynomiální čas."
+});
+
+questions.push({
+    "question": "Pro globální metody používající čistou dekompozici platí:",
+    "answers": {
+        "1": "Každá globální metoda musí najít řešení každé instance.",
+        "2": "Každá přibližná dekompozice nutně najde exaktní řešení.",
+        "3": "Pokud čistá dekompozice nenalezne žádné řešení a algoritmus je korektní, původní instance nemá řešení.",
+        "4": "Globální metody typicky mají rekurzivní formulaci."
+    },
+    "correct": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 26; ID GLOB-06. S. 26, tučně D,E."
+});
+
+questions.push({
+    "question": "Tabu search: k optimalizačnímu kritériu přidáme pokutu za tah, jehož Hammingova vzdálenost překročí práh. Jde o:",
+    "answers": {
+        "1": "diverzifikaci",
+        "2": "intenzifikaci",
+        "3": "omezení okolí"
+    },
+    "correct": {
+        "1": 0,
+        "2": 1,
+        "3": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 11; ID TABU-01. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Tabu search: zakázaný tah je přesto proveden, jestliže využívá velmi zřídka navštívené uzly. Jakou roli opatření plní?",
+    "answers": {
+        "1": "diverzifikaci",
+        "2": "intenzifikaci",
+        "3": "aspirační kritérium"
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 11; ID TABU-02. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Tabu search: překonáme tabu, když kandidátní cesta dosud vůbec nebyla navštívena, a jinak penalizujeme často používané uzly. Jaké mechanismy jsou přítomné?",
+    "answers": {
+        "1": "diverzifikace",
+        "2": "intenzifikace",
+        "3": "aspirace"
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 11; ID TABU-03. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Tabu search: tah dostane pokutu, pokud četnost použití jeho uzlů převyšuje průměr. Opatření podporuje:",
+    "answers": {
+        "1": "diverzifikaci",
+        "2": "intenzifikaci",
+        "3": "aspiraci"
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 11; ID TABU-04. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Tabu search: při bitu s vysokou dosavadní četností 1 je dovoleno tabu porušit a bit znovu nastavit na 1. Jde o:",
+    "answers": {
+        "1": "diverzifikaci",
+        "2": "intenzifikaci",
+        "3": "pouhé omezení okolí"
+    },
+    "correct": {
+        "1": 0,
+        "2": 1,
+        "3": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 11; ID TABU-05. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. V originálu práh >0,7."
+});
+
+questions.push({
+    "question": "Tabu search: tabu lze porušit nastavením vzácného bitu do 1 (četnost <0,3) nebo častého bitu do 0 (četnost >0,7). Opatření podporuje:",
+    "answers": {
+        "1": "diverzifikaci",
+        "2": "intenzifikaci",
+        "3": "omezení okolí"
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 12; ID TABU-06. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. Zdroj u varianty výslovně upozorňuje, že některé odpovědi nejsou ověřené."
+});
+
+questions.push({
+    "question": "Tabu search s binárním vektorem: tahy s Hammingovou vzdáleností větší než K jsou tabu. Chceme zvýšit diverzifikaci. Jak změnit K?",
+    "answers": {
+        "1": "snížit K",
+        "2": "zvýšit K",
+        "3": "K nemá vliv"
+    },
+    "correct": {
+        "1": 0,
+        "2": 1,
+        "3": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 12; ID TABU-07. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Tabu search: prolomení tabu povolíme, pokud četnost uzlu je menší než K procent průměru. Chceme zvýšit intenzifikaci. Jak změnit K?",
+    "answers": {
+        "1": "snížit K",
+        "2": "zvýšit K",
+        "3": "K nemá vliv"
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 12; ID TABU-08. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Tabu search konverguje pomalu, ale dává kvalitní výsledky. Jaké opatření je podle staršího testu vhodné?",
+    "answers": {
+        "1": "aspirační kritérium spouštěné dosud nejlepším řešením",
+        "2": "aspirační kritérium pro nízkou četnost tahu",
+        "3": "odměna za nízkou četnost tahu"
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 12; ID TABU-09. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. Toto historické doporučení je kontextové, nikoli univerzální záruka."
+});
+
+questions.push({
+    "question": "Tabu search často uvázne v lokálním optimu. Které změny mohou pomoci diverzifikaci?",
+    "answers": {
+        "1": "zkrácení tabu lhůty",
+        "2": "aspirace při nízké frekvenci atributů tahu",
+        "3": "odměna za nízkou frekvenci atributů tahu"
+    },
+    "correct": {
+        "1": 0,
+        "2": 1,
+        "3": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 12; ID TABU-10. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Tabu search pro TSP: tabu zakážeme často použité hrany, ale povolíme tah, pokud zlepšení kritéria překročí práh. Jde o:",
+    "answers": {
+        "1": "diverzifikaci",
+        "2": "intenzifikaci",
+        "3": "aspiraci"
+    },
+    "correct": {
+        "1": 0,
+        "2": 1,
+        "3": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 12; ID TABU-11. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. Podle původně tučně označených B,C; pojem samotného prolomení tabu odpovídá aspiraci."
+});
+
+questions.push({
+    "question": "Tabu search: tah je zakázán při změně více než poloviny bitů, ale povolí se, pokud některý bit získá dosud nevyzkoušenou hodnotu. Co to podporuje?",
+    "answers": {
+        "1": "diverzifikaci",
+        "2": "intenzifikaci",
+        "3": "aspiraci"
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 13; ID TABU-12. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Potřebujeme zvýšit diverzifikaci v tabu prohledávání. Které změny jsou ve starším testu doporučeny?",
+    "answers": {
+        "1": "zkrátit tabu lhůtu",
+        "2": "aspirační kritérium pro málo používané atributy",
+        "3": "odměna za malou četnost atributů tahu"
+    },
+    "correct": {
+        "1": 0,
+        "2": 1,
+        "3": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 13; ID TABU-13. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Potřebujeme zvýšit intenzifikaci v tabu prohledávání. Které změny jsou ve starším testu doporučeny?",
+    "answers": {
+        "1": "zkrátit tabu lhůtu",
+        "2": "aspirace pro velmi nízkou frekvenci atributů",
+        "3": "odměna za málo používané atributy",
+        "4": "aspirační kritérium při vysoké frekvenci atributů"
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 13; ID TABU-14. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Tabu prohledávání často uvázne v lokálním optimu. Jaké postupy mohou pomoci?",
+    "answers": {
+        "1": "prodloužit tabu lhůtu",
+        "2": "restartovat od dosud nejlepšího řešení",
+        "3": "restartovat od náhodného řešení"
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 13; ID TABU-15. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Tabu search pro TSP: jako tabu atribut použijeme jen výslednou dvojici hran místo celé záměny. Co to může způsobit?",
+    "answers": {
+        "1": "větší diverzifikaci",
+        "2": "větší intenzifikaci",
+        "3": "silnější omezení aktuálního okolí"
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 13; ID TABU-16. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Jaká strategie prohledávání okolí je typická pro tabu search podle původního testu?",
+    "answers": {
+        "1": "první zlepšení nebo přijatelné zhoršení",
+        "2": "pouze nejlepší soused"
+    },
+    "correct": {
+        "1": 0,
+        "2": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 13; ID TABU-17. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. Znění používá terminologii dokumentu. Standardní tabu search často vybírá nejlepší přípustný tah i při zhoršení."
+});
+
+questions.push({
+    "question": "K čemu lze u tabu search využít dlouhodobou paměť?",
+    "answers": {
+        "1": "diverzifikace",
+        "2": "intenzifikace",
+        "3": "omezování prohledávaného okolí"
+    },
+    "correct": {
+        "1": 1,
+        "2": 1,
+        "3": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 14; ID TABU-18. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Které účinky může mít pravidlo, podle kterého je tah tabu?",
+    "answers": {
+        "1": "diverzifikace",
+        "2": "intenzifikace",
+        "3": "omezení okolí"
+    },
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 1
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 14; ID TABU-19. Historická látka Tabu – dle PDF již není součástí předmětu; zařazeno pouze do archivu. "
+});
+
+questions.push({
+    "question": "Metoda Kernighan–Lin má následující vlastnosti:",
+    "answers": {
+        "1": "je založena na konstrukci proměnného okolí",
+        "2": "okolí prohledává metodou pouze nejlepší",
+        "3": "je primárně založena na prořezávání B&B",
+        "4": "vždy dává lepší výsledek než metoda nejlepší nejdříve"
+    },
+    "correct": {
+        "1": 1,
+        "2": 1,
+        "3": 0,
+        "4": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 30; ID KERN-01. Dvě tučně označené možnosti dle PDF s. 30."
+});
+
+questions.push({
+    "question": "Instance problému splnění podmínek má n konfiguračních proměnných a každá má d hodnot. Jak velký je prostor úplných ohodnocení a prostor s jednou hodnotou 'nepřiřazeno' na proměnnou?",
+    "answers": {
+        "1": "úplný stavový prostor má n^d prvků",
+        "2": "úplný stavový prostor má d^n prvků",
+        "3": "prostor úplných a částečných ohodnocení má (d+1)^n prvků",
+        "4": "počet částečných ohodnocení je vždy d^(2n)"
+    },
+    "correct": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "4": 0
+    },
+    "note": "Zdroj: NI-KOP uzavřené otázky.pdf, str. 32; ID CSP-01. PDF s. 32, správné B,C."
+});

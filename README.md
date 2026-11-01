@@ -28,3 +28,9 @@ Aplikace je statická a lze ji nasadit pomocí GitHub Pages.
 - `scripts/questions.js` – původní otázky ze sady Assessment
 - `scripts/exam/exam-questions-converted.js` – původní otázky ze sady Exam
 - `scripts/question-sets.js` – tematická klasifikace a výběr sad podle přednášek
+
+## Doplněné otázky ze staršího PDF
+
+Soubor `NI-KOP uzavřené otázky.pdf` (36 stran; sbírka starých zápočtových a zkouškových otázek) byl tematicky porovnán s aktuálním bankem. Nové samostatné úlohy z **dynamického programování a globálních metod** patří do P12; otázky k **Tabu search**, které zdroj výslovně označuje jako vyřazené z předmětu, jsou ponechány **pouze v archivu**. Některé neúplné či nejasné varianty nebyly přidány; u přidaných položek je uvedeno číslo stránky a poznámka k případným odlišnostem od historického klíče.
+
+[Podrobná kontrola PDF](docs/pdf-question-audit-2026-11-01.md).
