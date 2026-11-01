@@ -803,3 +803,40 @@ questions.push({
     answer: "Komunikační složitost se používá při vyhodnocení složitosti distribuovaných/paralelních algoritmů.<br>"+
             "Udává, kolikrát si musí jednotlivé výpočetní jednotky vyměnit informace, než dojde ke konci algoritmu/výpočtu."
 });
+
+// Doplněné ověřené otázky z FigJam NI-KOP zápočet (část 1–71 z 112 obrázků).
+questions.push({
+    question: "Jak lze dokázat, že daný rozhodovací problém nepatří do třídy P? Uveďte alespoň dva principiálně odlišné přístupy.",
+    answer: "1. **Podmíněný důkaz:** za předpokladu P ≠ NP dokážeme NP-těžkost pomocí polynomiální redukce známého NP-úplného problému na zkoumaný problém. Kdyby byl v P, platilo by P = NP.<br>2. **Nepodmíněný důkaz:** dokážeme superpolynomiální dolní mez pro každý deterministický algoritmus řešící daný problém v uvažovaném výpočetním modelu (např. vhodným argumentem z hierarchie časových tříd). Takové důkazy bývají mimořádně obtížné.",
+    note: "FigJam: obrázek 11 (uzel 1:93). **Pozor:** ve zdrojové studentské odpovědi je jako druhá možnost uvedena neověřitelnost certifikátu v polynomiálním čase; samotná absence známého ověřovače není důkazem, že problém nepatří do P. Zde je uvedeno odborné upřesnění."
+});
+
+questions.push({
+    question: "Navrhněte souvislý symetrický stavový prostor pro problém Minimum Bin Packing: n věcí má dané velikosti, kontejnery mají kapacitu B a chceme minimalizovat jejich počet. Popište konfiguraci, stavy a operátory.",
+    answer: "Konfigurace přiřazuje každé z n věcí číslo kontejneru; lze předem připustit nejvýše n očíslovaných kontejnerů. Pro konstrukční hledání může stav obsahovat také dosud nepřiřazené věci. Operátory: (1) přiřaď jednu nepřiřazenou věc do zvoleného kontejneru, (2) odeber přiřazenou věc zpět mezi nepřiřazené. Jde o vzájemně inverzní akce; jakýkoli stav lze přes prázdné přiřazení převést na jiný, proto je prostor souvislý a symetrický. Aby to platilo bez výjimek, mohou mezistavy dočasně porušovat kapacitu B a mít penalizaci; výsledná řešení musí dodržet kapacity a každá věc musí být umístěna právě jednou.",
+    note: "FigJam: obrázek 18 (uzel 2:35). Definice stavů a dvojice inverzních operátorů navazuje na původní odpověď; vysvětlení relaxace a souvislosti je doplněno."
+});
+
+questions.push({
+    question: "Zformulujte NP-úplnou rozhodovací verzi optimalizačního problému nalezení maximální kliky v grafu.",
+    answer: "Vstup: neorientovaný graf G=(V,E) a celé číslo K. Otázka: **Existuje v G klika obsahující alespoň K vrcholů?** (Rozhodovací problém CLIQUE.) Jde o NP-úplný problém. U kladné instance tvoří certifikát množina K vybraných vrcholů a lze ověřit, že každé dva z nich jsou spojeny hranou.",
+    note: "FigJam: obrázek 21 (uzel 2:53). Otázka na formulaci rozhodovací varianty; nepřidává se další kopie stejné formulace."
+});
+
+questions.push({
+    question: "Navrhněte souvislý symetrický stavový prostor pro Minimum Multiprocessor Scheduling: máte množinu úloh T, m procesorů a kladné časy trvání t_j. Minimalizujete maximální součet časů úloh přiřazených jednomu procesoru. Uveďte stavy, konfigurační proměnné a operátory.",
+    answer: "Konfigurací je přiřazení každé úlohy právě jednomu z m procesorů; lze ji reprezentovat uspořádanými seznamy úloh pro jednotlivé procesory. Stav konstrukčního hledání obsahuje tyto seznamy a množinu nepřiřazených úloh. Operátory: (1) připojit jednu nepřiřazenou úlohu na konec seznamu zvoleného procesoru, (2) odebrat poslední úlohu ze seznamu procesoru zpět mezi nepřiřazené. Akce jsou vzájemně inverzní. Každý stav lze postupně vyprázdnit a poté vystavět jiný, takže stavový prostor je souvislý a symetrický. Cena úplného rozvrhu je max_i Σ_{j přiřazeno i} t_j.",
+    note: "FigJam: obrázek 38 (uzel 2:143). Zachována formulace příkladu a návrh operátorů."
+});
+
+questions.push({
+    question: "Odvoďte z úlohy maximální kliky rozhodovací problém z třídy co-NP-úplných problémů a zapište jeho otázku.",
+    answer: "Vstup: graf G a celé číslo K. Otázka: **Platí, že každá klika v G obsahuje méně než K vrcholů?** Ekvivalentně: v grafu neexistuje klika velikosti alespoň K. Je to doplněk NP-úplného rozhodovacího problému CLIQUE a je tedy co-NP-úplný (pro standardní polynomiální many-one redukce). Pozor: otázka musí zahrnovat všechny kliky, nikoli pouze jednu nalezenou.",
+    note: "FigJam: obrázek 49 (uzel 2:200). Původní zadání se týká komplementární rozhodovací varianty."
+});
+
+questions.push({
+    question: "Pro rozhodovací problém CLIQUE (existuje v grafu G klika velikosti alespoň K?) navrhněte konfigurační proměnné a omezení a dokažte, že problém patří do NP.",
+    answer: "Pro každý vrchol v∈V zavedeme bit x_v∈{0,1}; hodnota 1 znamená, že vrchol vybereme. Omezení: Σ_v x_v ≥ K a pro každé dva různé nesousední vrcholy u,v nesmí současně platit x_u=x_v=1. Certifikátem je bitový vektor délky |V|. Ověření zahrnuje počet vybraných vrcholů a kontrolu sousednosti všech vybraných dvojic, nejvýše O(|V|²) kontrol, tedy polynomiálně. Tím dokazujeme CLIQUE∈NP; NP-těžkost se dokazuje samostatnou redukcí.",
+    note: "FigJam: obrázky 53 (uzel 2:216) a 63 (uzel 2:264). Dvě vyobrazení stejné úlohy; odpověď zpřesňuje požadavek velikosti na alespoň K."
+});
