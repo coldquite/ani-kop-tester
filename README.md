@@ -41,8 +41,11 @@ Vedle historických sad jsou dostupné **oddělené tréninkové sady** označen
 
 - **AI-generated · P1**: `?set=ai-lecture-1` (16 otázek, ANI-KOP01.pdf).
 - **AI-generated · P2**: `?set=ai-lecture-2` (18 otázek, ANI-KOP02.pdf).
+- **AI-generated · P3**: `?set=ai-lecture-3` (18 otázek, ANI-KOP03.pdf).
 - `?set=ai-all`: všechny dokončené AI-generated sady (doplní se L2–L4).
 
 [Audit pokrytí a návrh nových otázek – L1](docs/ai-generated/lecture-01.md).
 
 [Audit pokrytí a návrh nových otázek – L2](docs/ai-generated/lecture-02.md).
+
+[Audit pokrytí a návrh nových otázek – L3](docs/ai-generated/lecture-03.md).
