@@ -40,6 +40,9 @@ Soubor `NI-KOP uzavřené otázky.pdf` (36 stran; sbírka starých zápočtovýc
 Vedle historických sad jsou dostupné **oddělené tréninkové sady** označené „AI-generated“. Tyto otázky **nejsou autentické otázky vyučujících**, pouze nové návrhy odvozené z oficiálních prezentací ANI-KOP 2026 a z porovnání s již existující bankou. Neovlivňují počty historických otázek ani sady Průběžný test / Druhá část semestru. Každá obsahuje správné odpovědi, zdůvodnění a odkazy na stránky přednášky.
 
 - **AI-generated · P1**: `?set=ai-lecture-1` (16 otázek, ANI-KOP01.pdf).
+- **AI-generated · P2**: `?set=ai-lecture-2` (18 otázek, ANI-KOP02.pdf).
 - `?set=ai-all`: všechny dokončené AI-generated sady (doplní se L2–L4).
 
 [Audit pokrytí a návrh nových otázek – L1](docs/ai-generated/lecture-01.md).
+
+[Audit pokrytí a návrh nových otázek – L2](docs/ai-generated/lecture-02.md).
