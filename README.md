@@ -42,9 +42,10 @@ Vedle historických sad jsou dostupné **oddělené tréninkové sady** označen
 - **AI-generated · P1**: `?set=ai-lecture-1` (16 otázek, ANI-KOP01.pdf).
 - **AI-generated · P2**: `?set=ai-lecture-2` (18 otázek, ANI-KOP02.pdf).
 - **AI-generated · P3**: `?set=ai-lecture-3` (18 otázek, ANI-KOP03.pdf).
+- **AI-generated · P4**: `?set=ai-lecture-4` (22 otázek, ANI-KOP04.pdf; aplikace stavových prostorů, B&B a lokálních metod).
 - **AI-generated · P5**: `?set=ai-lecture-5` (22 otázek, ANI-KOP05.pdf; interpretace SAT/SMT bez psaní kódu).
 - **AI-generated · P6**: `?set=ai-lecture-6` (29 otázek, KOP06.pdf; čtení a interpretace ILP/CSP modelů).
-- `?set=ai-all`: všechny dokončené AI-generated sady (doplní se L2–L4).
+- `?set=ai-all`: všechny AI-generated sady P1–P6 (samostatně oddělené od historických otázek).
 
 [Audit pokrytí a návrh nových otázek – L1](docs/ai-generated/lecture-01.md).
 
@@ -55,3 +56,5 @@ Vedle historických sad jsou dostupné **oddělené tréninkové sady** označen
 [Audit pokrytí a návrh nových otázek – L5](docs/ai-generated/lecture-05.md).
 
 [Audit pokrytí a návrh nových otázek – L6](docs/ai-generated/lecture-06.md).
+
+[Audit pokrytí a nové otázky – L4](docs/ai-generated/lecture-04.md).
