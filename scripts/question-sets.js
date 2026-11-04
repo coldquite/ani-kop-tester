@@ -349,10 +349,16 @@
         all: "Všechny otázky · včetně archivu"
     };
 
+    function aiQuestions(lecture) {
+        var sets = global.aiGeneratedQuestionSets || {};
+        return (sets[lecture] || []).slice();
+    }
+
     function canonicalId(id) {
         // Zpětná kompatibilita se starými odkazy ?set=assessment a ?set=exam.
         if (id === "assessment") return "midterm";
         if (id === "exam") return "second";
+        if (id === "ai-all" || /^ai-lecture-[1-4]$/.test(id || "")) return id;
         if (id && Object.prototype.hasOwnProperty.call(lectures, id.replace(/^lecture-/, "")) &&
             /^lecture-\d+$/.test(id)) return id;
         return Object.prototype.hasOwnProperty.call(labels, id) ? id : "midterm";
@@ -360,6 +366,8 @@
 
     function getQuestions(setId) {
         var id = canonicalId(setId);
+        if (id.indexOf("ai-lecture-") === 0) return aiQuestions(Number(id.substring(11)));
+        if (id === "ai-all") return [1, 2, 3, 4].reduce(function (all, lecture) { return all.concat(aiQuestions(lecture)); }, []);
         if (id.indexOf("lecture-") === 0) {
             return (lectures[id.substring(8)] || []).slice();
         }
@@ -376,7 +384,10 @@
             var setId = option.value;
             var count = getQuestions(setId).length;
             var lectureMatch = /^lecture-(\d+)$/.exec(setId);
-            var title = lectureMatch
+            var aiMatch = /^ai-lecture-(\d+)$/.exec(setId);
+            var title = aiMatch ? "AI-generated · P" + aiMatch[1] + " · " + lectureNames[Number(aiMatch[1]) - 1]
+                : setId === "ai-all" ? "AI-generated · všechny připravené přednášky"
+                : lectureMatch
                 ? "P" + lectureMatch[1] + " · " + lectureNames[Number(lectureMatch[1]) - 1]
                 : labels[setId];
             if (title) option.textContent = title + " (" + count + ")";
@@ -393,6 +404,7 @@
         lectureNames: lectureNames,
         // Pro kontrolu úplnosti tematického rozřazení.
         totalQuestions: sources.assessment.length + sources.exam.length,
-        archivedQuestions: archive.length
+        archivedQuestions: archive.length,
+        aiGeneratedQuestions: [1, 2, 3, 4].reduce(function (sum, lecture) { return sum + aiQuestions(lecture).length; }, 0)
     };
 })(window);

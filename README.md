@@ -34,3 +34,12 @@ Aplikace je statická a lze ji nasadit pomocí GitHub Pages.
 Soubor `NI-KOP uzavřené otázky.pdf` (36 stran; sbírka starých zápočtových a zkouškových otázek) byl tematicky porovnán s aktuálním bankem. Nové samostatné úlohy z **dynamického programování a globálních metod** patří do P12; otázky k **Tabu search**, které zdroj výslovně označuje jako vyřazené z předmětu, jsou ponechány **pouze v archivu**. Některé neúplné či nejasné varianty nebyly přidány; u přidaných položek je uvedeno číslo stránky a poznámka k případným odlišnostem od historického klíče.
 
 [Podrobná kontrola PDF](docs/pdf-question-audit-2026-11-01.md).
+
+## AI-generated otázky založené na přednáškách 2026
+
+Vedle historických sad jsou dostupné **oddělené tréninkové sady** označené „AI-generated“. Tyto otázky **nejsou autentické otázky vyučujících**, pouze nové návrhy odvozené z oficiálních prezentací ANI-KOP 2026 a z porovnání s již existující bankou. Neovlivňují počty historických otázek ani sady Průběžný test / Druhá část semestru. Každá obsahuje správné odpovědi, zdůvodnění a odkazy na stránky přednášky.
+
+- **AI-generated · P1**: `?set=ai-lecture-1` (16 otázek, ANI-KOP01.pdf).
+- `?set=ai-all`: všechny dokončené AI-generated sady (doplní se L2–L4).
+
+[Audit pokrytí a návrh nových otázek – L1](docs/ai-generated/lecture-01.md).
