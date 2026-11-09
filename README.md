@@ -58,3 +58,15 @@ Vedle historických sad jsou dostupné **oddělené tréninkové sady** označen
 [Audit pokrytí a návrh nových otázek – L6](docs/ai-generated/lecture-06.md).
 
 [Audit pokrytí a nové otázky – L4](docs/ai-generated/lecture-04.md).
+
+## Doplňkové otázky z dokumentu „Příprava na zápočtový test NI-KOP“
+
+Z historické 27stránkové přípravy bylo doplněno **15 samostatných tréninkových otázek** po kontrole tematického překryvu se stávajícími sadami a AI-generated otázkami. Historický dokument není oficiální seznam testových otázek pro ANI-KOP 2026 a některé původní odpovědi jsou neúplné či chybné; přidané vzorové odpovědi jsou studijní vysvětlení, nikoli oficiální klíč.
+
+Samostatné sady: `?set=pdf-p1` (modelování a NPO), `?set=pdf-p2` (třídy složitosti), `?set=pdf-p3` (redukce), `?set=pdf-p4` (stavový prostor) a `?set=pdf-all` (všech 15 otázek). **Nejsou automaticky přidány do původní sady průběžného testu ani do AI-generated sad.** Starší témata (simulované ochlazování, genetické algoritmy, obvodová složitost, aproximační schémata) zde nejsou nově přidávána.
+
+Otázky obsahují číslo stránky historického dokumentu a upozornění na neověřenou autenticitu. Soubor: `scripts/pdf-prep-questions.js`.
+
+### Obrázky v otázkách
+
+Historické PNG soubory v `assets/exam` jsou verzované přes Git LFS a v GitHub Pages se při přímém čtení mohou načítat jako textový ukazatel místo obrázku. `scripts/image-paths.js` přepíše adresy těchto obrázků na `media.githubusercontent.com` a zachová odkazy na původní GitHub soubory jako fallback při chybě načtení. Funguje v testu i v přehledu; nemění původní otázky ani soubory PNG.
