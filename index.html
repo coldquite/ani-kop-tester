@@ -41,6 +41,8 @@
     <script type="text/javascript" src="scripts/ai-generated/lecture-04.js"></script>
     <script type="text/javascript" src="scripts/ai-generated/lecture-05.js"></script>
     <script type="text/javascript" src="scripts/ai-generated/lecture-06.js"></script>
+    <script type="text/javascript" src="scripts/pdf-prep-questions.js"></script>
+    <script type="text/javascript" src="scripts/image-paths.js"></script>
     <script type="text/javascript" src="scripts/question-sets.js"></script>
     <script type="text/javascript" src="scripts/app.js"></script>
 
@@ -79,6 +81,13 @@
               <option value="lecture-11">P11 · Vícekriteriální a evoluční metody</option>
               <option value="lecture-12">P12 · Globální metody</option>
             </optgroup>
+            <optgroup label="Doplněk z historické přípravy NI-KOP · ověřte podle ANI-KOP 2026">
+              <option value="pdf-all">Všechny nové otázky z přípravy NI-KOP</option>
+              <option value="pdf-p1">P1 · Modelování a NPO</option>
+              <option value="pdf-p2">P2 · Třídy složitosti</option>
+              <option value="pdf-p3">P3 · Redukce a důkazy</option>
+              <option value="pdf-p4">P4 · Stavový prostor</option>
+            </optgroup>
             <optgroup label="AI-generated · pouze tréninkové otázky (nikoli reálný test)">
               <option value="ai-lecture-1">AI-generated · P1 Kombinatorické problémy</option>
               <option value="ai-lecture-2">AI-generated · P2 P, NP, co-NP a polynomiální hierarchie</option>
@@ -114,9 +123,11 @@
           <div ng-if="questionImage" class="mb-6">
             <img
               ng-src="{{questionImage}}"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
               alt="Obrázek k otázce"
               class="max-w-full h-auto rounded-xl border border-slate-200 shadow-sm"
             />
+            <a style="display:none" ng-href="{{questionImageGithub || questionImage}}" target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">Obrázek nelze načíst · otevřít originál na GitHubu</a>
           </div>
 
           <form action="" role="form">
@@ -211,9 +222,11 @@
                 <div ng-if="answerImage" class="mt-4">
                   <img
                     ng-src="{{answerImage}}"
+                    onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
                     alt="Obrázek k odpovědi"
                     class="max-w-full h-auto rounded-lg border border-slate-200 shadow-sm"
                   />
+                  <a style="display:none" ng-href="{{answerImageGithub || answerImage}}" target="_blank" rel="noopener noreferrer" class="text-blue-700 underline">Obrázek odpovědi nelze načíst · otevřít originál na GitHubu</a>
                 </div>
               </div>
 
