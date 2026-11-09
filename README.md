@@ -17,6 +17,8 @@ Otevřete `index.html` a vyberte tematickou sadu otázek podle harmonogramu ANI-
 - **Všechny otázky:** kompletní původní databáze bez vynechání.
 - **Jednotlivé přednášky:** samostatné sady P1 až P12; přednášky bez dostupných otázek jsou v nabídce označeny a nelze je vybrat.
 
+**Audit prvního testu (9. 11. 2026):** sada P1–P6 byla zkontrolována vůči přednáškám ANI-KOP00–05. Z 109 na 98 otázek; otázky o simulovaném ochlazování a experimentálním hodnocení heuristik již do prvního testu nepatří. Problematické historické formulace zůstaly v archivu, neodstranily se ze zdrojů. [Podrobná tabulka změn](docs/midterm-scope-audit-2026-11-09.md).
+
 Zdroje otázek pocházejí ze starších verzí předmětu. Přiřazení k přednáškám je **orientační tematická klasifikace**, nikoli potvrzený rozsah nebo zadání testu 2026. Původní odkazy `?set=assessment` a `?set=exam` se přesměrují na nové sady.
 
 Aplikace je statická a lze ji nasadit pomocí GitHub Pages.
