@@ -163,6 +163,7 @@
             // Handle question image
             if (questions.image) {
                 $scope.questionImage = questions.image;
+                $scope.questionImageGithub = questions.imageGithub || questions.image;
             } else {
                 $scope.questionImage = "";
             }
@@ -184,6 +185,7 @@
             // Handle answer image for text questions
             if (questions.answerImage) {
                 $scope.answerImage = questions.answerImage;
+                $scope.answerImageGithub = questions.answerImageGithub || questions.answerImage;
             } else {
                 $scope.answerImage = "";
             }
