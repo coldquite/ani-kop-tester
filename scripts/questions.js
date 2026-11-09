@@ -370,7 +370,7 @@ questions.push({
 
 questions.push({
     question: "Co jsou to iterativní heuristiky? Uveďte příklad.",
-    answer: "Iterativní heuristika začne s nějakým řešením a to postupně vylepšuje. Iterativní heuristika se ale tak pohybuje v podgrafu stavového prostoru, ve kterém se nemusí nacházet globální optimum. Např. Simulované ochlazování."
+    answer: "Iterativní lokální heuristika začíná v počáteční konfiguraci a pomocí operátorů přechází do sousedních stavů. Jednoduché strategie mohou přijímat jen zlepšení a uváznout v lokálním optimu. Příklady z ANI-KOP04: First Improvement (první zlepšení), Best Only (pouze nejlepší) a Kernighan–Lin."
 });
 
 
