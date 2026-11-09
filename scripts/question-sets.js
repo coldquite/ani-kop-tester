@@ -8,6 +8,9 @@
         assessment: global.questions || [],
         exam: global.examQuestions || []
     };
+    var pdfSections = global.kopPdfPrepSections || [];
+    var pdfQuestions = global.kopPdfPrepQuestions || [];
+    var pdfIds = pdfSections.map(function (section) { return section.id; });
     var lectureAssignments = {
     "1": {
         "assessment": [
@@ -357,6 +360,7 @@
     function canonicalId(id) {
         // Zpětná kompatibilita se starými odkazy ?set=assessment a ?set=exam.
         if (id === "assessment") return "midterm";
+        if (pdfIds.indexOf(id) !== -1 || id === "pdf-all") return id;
         if (id === "exam") return "second";
         if (id === "ai-all" || /^ai-lecture-[1-6]$/.test(id || "")) return id;
         if (id && Object.prototype.hasOwnProperty.call(lectures, id.replace(/^lecture-/, "")) &&
@@ -366,6 +370,8 @@
 
     function getQuestions(setId) {
         var id = canonicalId(setId);
+        if (id === "pdf-all") return pdfQuestions.slice();
+        if (pdfIds.indexOf(id) !== -1) return pdfQuestions.filter(function (question) { return question.category === id; });
         if (id.indexOf("ai-lecture-") === 0) return aiQuestions(Number(id.substring(11)));
         if (id === "ai-all") return [1, 2, 3, 4, 5, 6].reduce(function (all, lecture) { return all.concat(aiQuestions(lecture)); }, []);
         if (id.indexOf("lecture-") === 0) {
@@ -385,7 +391,10 @@
             var count = getQuestions(setId).length;
             var lectureMatch = /^lecture-(\d+)$/.exec(setId);
             var aiMatch = /^ai-lecture-(\d+)$/.exec(setId);
-            var title = aiMatch ? "AI-generated · P" + aiMatch[1] + " · " + lectureNames[Number(aiMatch[1]) - 1]
+            var pdfMatch = pdfSections.filter(function (section) { return section.id === setId; })[0];
+            var title = pdfMatch ? pdfMatch.label
+                : setId === "pdf-all" ? "Z přípravy NI-KOP · všechny nové doplňkové otázky"
+                : aiMatch ? "AI-generated · P" + aiMatch[1] + " · " + lectureNames[Number(aiMatch[1]) - 1]
                 : setId === "ai-all" ? "AI-generated · všechny připravené přednášky"
                 : lectureMatch
                 ? "P" + lectureMatch[1] + " · " + lectureNames[Number(lectureMatch[1]) - 1]
@@ -405,6 +414,7 @@
         // Pro kontrolu úplnosti tematického rozřazení.
         totalQuestions: sources.assessment.length + sources.exam.length,
         archivedQuestions: archive.length,
-        aiGeneratedQuestions: [1, 2, 3, 4, 5, 6].reduce(function (sum, lecture) { return sum + aiQuestions(lecture).length; }, 0)
+        aiGeneratedQuestions: [1, 2, 3, 4, 5, 6].reduce(function (sum, lecture) { return sum + aiQuestions(lecture).length; }, 0),
+        pdfPrepQuestions: pdfQuestions.length
     };
 })(window);
