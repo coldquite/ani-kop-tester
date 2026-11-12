@@ -185,25 +185,17 @@ questions.push({
     note: "<b>Minimum bin packing problem</b> = Je dána množina $n$ věcí a pro každou věc její velikost. Je možné všechny věci umístit do nejvýše $K$ kontejnerů o kapacitě $B$ každý?"
 });
 questions.push({
-    question: "A) Dokažte, že optimalizační problém obchodního cestujícího (TSP-O) patří do NPO.<br>B) Vyjmenujte jeho konfigurační proměnné<br>C) Co je zde certifikátem?",
-    answer: "Optimalizační problém Π patří do třídy NPO, jestliže splňuje následující podmínky:<br><ul>"+
-    "<li>velikost výstupu instance je omezena polynomem ve velikosti instance (tj. výstup lze zapsat v polynomiálním čase),</li>"+
-    "<li>problém, zda daná konfigurace je řešením, patří do P (tj. omezující podmínky lze vyhodnotit v polynomiálním čase),</li>"+
-    "<li>optimalizační kritérium lze vyhodnotit v polynomiálním čase</li></ul><br>"+
-	"b) Vyjmenujte jeho konfigurační proměnné - vektor obsahující posloupnost uzlů<br>"+
-	"c1) Co je certifikátem optimalizační verze tohoto problému? - Certifikát optimalizační verze, tj. konfiguraci, která dává optimální řešení, jistě nelze ověřit v polynomiálním čase. Musíme totiž zjistit, zda je skutečně optimální, což je problém TSP-O samotný.<br>"+
-	"c2) Co jsou omezující podmínky optimalizační verze tohoto problému? - Cesta musí být uzavřená a každý uzel navštívit právě jednou"
+    "question": "A) Dokažte, že optimalizační problém obchodního cestujícího (TSP-O) patří do NPO.<br>B) Vyjmenujte jeho konfigurační proměnné<br>C) Co je zde certifikátem?",
+    "answer": "A) TSP-O patří do NPO: okruh má polynomiálně dlouhý popis, lze polynomiálně ověřit, že navštěvuje každé město právě jednou a vrací se na začátek, a lze polynomiálně sečíst ceny hran.<br>B) Konfigurační proměnné mohou být permutace měst nebo binární proměnné x_ij udávající vybrané hrany s odpovídajícími omezeními.<br>C) Pro ověření přípustnosti a ceny kandidátního řešení stačí předložený okruh. U rozhodovací verze s prahem K je certifikátem ANO-instance okruh s cenou nejvýše K. NPO nevyžaduje polynomiální ověřování optimality. Ověření, že žádný levnější okruh neexistuje, je jiná úloha; obecnou nemožnost polynomiálního ověření nelze bez předpokladů vydávat za dokázanou.",
+    "note": "Opraveno rozlišení přípustnosti kandidáta, certifikátu rozhodovací verze a důkazu optimality."
 });
+
 questions.push({
-    question: "A) Dokažte, že optimalizační problém uzlového pokrytí grafu patří do NPO<br>B) Vyjmenujte jeho konfigurační proměnné<br>C) Co je zde certifikátem?",
-    answer: "Optimalizační problém Π patří do třídy NPO, jestliže splňuje následující podmínky:<br><ul>"+
-    "<li>velikost výstupu instance je omezena polynomem ve velikosti instance (tj. výstup lze zapsat v polynomiálním čase),</li>"+
-    "<li>problém, zda daná konfigurace je řešením, patří do P (tj. omezující podmínky lze vyhodnotit v polynomiálním čase),</li>"+
-    "<li>optimalizační kritérium lze vyhodnotit v polynomiálním čase</li></ul><br>"+
-    "b) Vyjmenujte jeho konfigurační proměnné - vektor obsahující posloupnost vrcholů<br>"+
-	"c1) Co je certifikátem optimalizační verze tohoto problému? - Certifikát optimalizační verze, tj. konfiguraci, která dává optimální řešení, jistě nelze ověřit v polynomiálním čase. Musíme totiž zjistit, zda je skutečně optimální, což je problém TSP-O samotný.<br>"+
-	"c2) Co jsou omezující podmínky optimalizační verze tohoto problému? - Cesta musí být uzavřená a každý uzel navštívit právě jednou"
+    "question": "A) Dokažte, že optimalizační problém uzlového pokrytí grafu patří do NPO<br>B) Vyjmenujte jeho konfigurační proměnné<br>C) Co je zde certifikátem?",
+    "answer": "A) Ano, minimální uzlové (vrcholové) pokrytí patří do NPO. Konfigurace má polynomiální délku; přípustnost i hodnotu kritéria lze ověřit/vypočítat v polynomiálním čase.<br>B) Pro každý vrchol v∈V zvolíme x_v∈{0,1}; hodnota 1 znamená, že v patří do pokrytí C. Konfigurace má |V| bitů.<br>C) Omezení: pro každou hranu {u,v}∈E platí x_u+x_v≥1. Kritérium: minimalizovat Σ_v x_v. Kontrola všech hran trvá O(|V|+|E|), stejně jako výpočet velikosti C, tedy polynomiálně.<br>U rozhodovací verze „existuje pokrytí velikosti nejvýše K?“ je certifikátem ANO-instance množina C; ověříme |C|≤K a pokrytí všech hran. U optimalizační verze kontrolujeme přípustnost a cenu kandidáta; NPO nevyžaduje polynomiální ověřování jeho optimality.",
+    "note": "Opraven původní zkopírovaný text z TSP. Uzlové pokrytí nevyžaduje uzavřenou cestu ani návštěvu každého vrcholu."
 });
+
 questions.push({
     question: "A) Dokažte, že problém splnitelnosti booleovské formule (SAT) patří do NP.<BR>B) Vyjmenujte jeho konfigurační proměnné.<BR>C) Co je certifikátem rozhodovací verze tohoto problému?",
     answer: "<ul><li>A) Abychom dokázali, že je problém v NP, musíme certifikát ověřit v polynomiálním čase.</li>" +
@@ -501,14 +493,20 @@ questions.push({
 });
 
 questions.push({
-    question: "Zaškrtněta správná tvrzení (za předpokladu, že platí $NP \\neq P$)",
-    answers: {
-        1: "$P \\subset NP$",
-        2: "$NPI \\subset NPC$",
-        3: "$P \\cap NP = \\textrm{Ø}$",
-        4: "$NPH \\subset PSPACE$"
+    "question": "Zaškrtněta správná tvrzení (za předpokladu, že platí $NP \\neq P$)",
+    "answers": {
+        "1": "$P \\subset NP$",
+        "2": "$NPI \\subset NPC$",
+        "3": "$P \\cap NP = \\textrm{Ø}$",
+        "4": "$NPH \\subset PSPACE$"
     },
-    correct: {1: 1, 2: 0, 3: 0, 4: 1}
+    "correct": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 0
+    },
+    "note": "Tvrzení NPH ⊆ PSPACE je nepravdivé. NP-těžkost je dolní mez obtížnosti a nezaručuje příslušnost do NP, rozhodnutelnost ani polynomiální prostor. NPH obsahuje i nerozhodnutelné problémy, zatímco PSPACE pouze rozhodnutelné. Známé NP ⊆ PSPACE nelze zaměnit za NPH ⊆ PSPACE. Zbývající odpovědi se hodnotí za uvedeného předpokladu P ≠ NP."
 });
 
 questions.push({
@@ -697,10 +695,9 @@ questions.push({
 });
 
 questions.push({
-    question: "Od problému nalezení minimální uzlového pokrytí grafu odvoďte rozhodovací problém, který by patřil do třídy P",
-    answer: "Minimální uzlové pokrytí: nalezněte minimální množinu uzlů grafu, která inciduje se všemi hranami. " +
-    "=> Incidují v dané konfiguraci dané uzly se všemi hranami? NEBO Rozhodovací problém vrcholového pokrytí se ptá, zda-li v daném grafu existuje vrcholové pokrytí maximálně o k vrcholech.",
-    note: "Vrcholové pokrytí grafu taková podmnožina vrcholů, že každá hrana grafu je incidentní aspoň s jedním vrcholem z této množiny."
+    "question": "Od problému minimálního uzlového pokrytí grafu odvoďte rozhodovací problém, který patří do P.",
+    "answer": "Vstup: neorientovaný graf G=(V,E) a konkrétní předložená množina C⊆V. Otázka: „Je C uzlovým pokrytím grafu G?“ Pro každou hranu {u,v} ověříme, že u∈C nebo v∈C. Po označení vrcholů C provedeme kontrolu v O(|V|+|E|), tedy v polynomiálním čase. Volitelně lze přidat práh K a ověřit také |C|≤K. Zde kontrolujeme konkrétní C, nehledáme neznámou množinu.",
+    "note": "Otázka „Existuje v G nějaké pokrytí o nejvýše K vrcholech?“ je NP-úplný Vertex Cover. Původní odpověď ji chybně nabízela jako alternativu problému z P. Polynomiální ověření předložené množiny není totéž co hledání takové množiny."
 });
 
 questions.push({
