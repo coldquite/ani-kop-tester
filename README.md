@@ -33,6 +33,8 @@ Aplikace je statická a lze ji nasadit pomocí GitHub Pages.
 
 ## Rekonstrukce ze studentských zpráv z listopadu 2026
 
+**Další samostatná sada ANI:** `?set=report-ani-extra` — **11 otázek (3 otevřené, 8 T/F)** z dalších čtyř screenshotů. Zahrnuje P/NP/co-NP a EXPTIME, prostor TSP, uzlové pokrytí v NPO, vyvrácení NPC, Big-M, CNF, Tseitinovu transformaci a rozpoznání nelineární účelové funkce. Souhrnná zpráva o třech T/F není započtena podruhé. Nejasné formulace mají vysvětlené předpoklady; zdroj neuvádí datum testu, proto jej nedoplňujeme. [Mapování čtyř screenshotů](docs/reported-ani-extra.md).
+
 Dvě samostatné sady odpovídají dvěma zprávám z dodaného screenshotu:
 
 - **12. 11. · Hülle · rekonstrukce**: `?set=report-2026-11-12-hulle` — 14 otázek (6 otevřených, 8 T/F).

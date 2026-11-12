@@ -116,12 +116,56 @@
             "Doplněn předpoklad P≠NP, aby otázka měla jednoznačný binární klíč. Původní nepodmíněná verze souvisí s otevřeným problémem P vs. NP.")
     ];
 
+    var aniCollection = [
+        tf("report-ani-extra-01", "jestli je P podmnozina exptime",
+            "Platí P ⊆ EXPTIME?", true,
+            "Ano. Každý deterministický polynomiální algoritmus má také exponenciální časovou horní mez. Navíc z deterministické časové hierarchie víme, že P je vlastní podtřídou EXPTIME (P ⊊ EXPTIME).",
+            "Zápis podmnožina ve výrocích této sady znamená ⊆, pokud není výslovně uvedeno vlastní zahrnutí."),
+        tf("report-ani-extra-02", "jestli je NP podmnozina exptime",
+            "Platí NP ⊆ EXPTIME?", true,
+            "Ano. NP jazyk má polynomiálně dlouhé certifikáty a polynomiální deterministický ověřovač. Pro vstup délky n můžeme deterministicky projít nejvýše 2^{p(n)} kandidátů a každého ověřit v polynomiálním čase. To je čas 2^{poly(n)}, tedy EXPTIME. Přísnost NP ⊆ EXPTIME není známa; exponenciální zde neznamená pouze 2^{O(n)}."),
+        tf("report-ani-extra-03", "jestli je co-NP podmnozina exptime",
+            "Platí co-NP ⊆ EXPTIME?", true,
+            "Ano. Pro L∈co-NP je doplněk L v NP, a tedy v EXPTIME. Deterministický rozhodovač doplňku spustíme a prohodíme ANO/NE. EXPTIME je uzavřena na doplněk, takže i L∈EXPTIME. Není nutné předpokládat NP=co-NP ani znát krátké ANO-certifikáty pro všechny co-NP jazyky."),
+        open("report-ani-extra-04", "pak neco neco symetricky souvisly stavovy prostor traveling salesman problemu",
+            "Pro optimalizační TSP na úplném grafu s n městy navrhněte konfigurační proměnné a souvislý symetrický stavový prostor. Uveďte stavy, operátory a kritérium.",
+            "Konfigurace je permutace měst π=(π_1,…,π_n); první město můžeme pevně zvolit jako start. Stav je jeden úplný okruh π_1→π_2→…→π_n→π_1. Kritérium je součet cen těchto n hran, který minimalizujeme. Operátor prohodí dvě různá města mimo pevný start. Je sám sobě inverzí, takže každá hrana stavového grafu má opačný tah a prostor je symetrický. Každou permutaci lze převést na libovolnou jinou posloupností transpozic, proto je prostor souvislý. V úplném grafu je každý takový okruh přípustný. Pro neúplný graf bychom museli výslovně povolit i nepřípustné mezistavy nebo navrhnout jiné operátory; souvislost množiny pouze přípustných okruhů automaticky neplyne.",
+            "Útržek neuvádí variantu TSP; zvolena standardní optimalizační verze na úplném grafu. Nezaměňujeme graf měst s grafem konfigurací."),
+        open("report-ani-extra-05", "pak tam bylo hodne uzlove pokryti, co jsou konfiguracni promenne, dukaz ze to je NPO",
+            "Pro minimální uzlové pokrytí grafu navrhněte konfigurační proměnné, omezení a kritérium. Dokažte příslušnost konstruktivní optimalizační verze do NPO.",
+            "Vstup: neorientovaný graf G=(V,E). Pro každý v∈V zavedeme x_v∈{0,1}; hodnota 1 znamená zařazení v do pokrytí C. Omezení: pro každou hranu {u,v}∈E platí x_u+x_v≥1. Minimalizujeme Σ_v x_v. Výstupem je optimální množina C={v:x_v=1}.\nPodmínky NPO: (1) konfigurace má |V| bitů, tedy polynomiální délku; (2) všechny domény a pokrytí všech hran lze ověřit v O(|V|+|E|); (3) cenu |C| spočítáme v O(|V|). Přípustné řešení vždy existuje, například C=V. NPO nevyžaduje polynomiální nalezení optima ani kontrolu jeho optimality. Uzlové pokrytí není Hamiltonovský okruh: nemusí obsahovat každý vrchol a nehledáme cestu."),
+        open("report-ani-extra-06", "jake jsou 2 nesouvisle metody vyvraceni ze problem je v NPC",
+            "Uveďte dva principiálně odlišné způsoby, jak vyvrátit NP-úplnost rozhodovacího problému B. Jaké předpoklady potřebujete?",
+            "NP-úplnost vyžaduje současně B∈NP a NP-těžkost vůči Karpovým redukcím.\n1. Vyvrátit členství v NP: dokázat B∉NP, např. dokázat, že B je nerozhodnutelný; každý NP jazyk je rozhodnutelný.\n2. Vyvrátit NP-těžkost: prokázat, že nějaký jazyk A∈NP nelze polynomiální many-one redukcí převést na B. Např. pro konstantní jazyk B=∅ žádná transformace nemůže zachovat ANO-instance netriviálního jazyka A={0}; B proto není NP-těžký, přestože B∈P⊆NP.\nZa předpokladu P≠NP stačí pro druhou cestu také prokázat B∈P. Bez tohoto předpokladu samotné členství v P obecně NP-úplnost nevylučuje. Neznalost certifikátu nebo redukce není důkazem jejich neexistence.",
+            "Nesouvislé metody vykládáme jako vyvrácení dvou různých podmínek definice NPC, nikoli jako dvě varianty důkazu NP-těžkosti."),
+        tf("report-ani-extra-07", "jestli Big-M pracuje s binarnimi promennymi",
+            "Ve standardním Big-M kódování podmíněných omezení v ILP/MILP lze použít binární proměnnou jako logický přepínač.", true,
+            "Např. y∈{0,1} a omezení aᵀx≤b+M(1−y) vyjadřují y=1 ⇒ aᵀx≤b, je-li M dostatečné pro platné meze x. Binární proměnná reprezentuje pravdivost podmínky; ostatní proměnné nemusí být binární. Netvrdíme, že každé použití velké konstanty ani simplexová Big-M metoda nutně vyžadují binární proměnnou.",
+            "Zpřesněno na Big-M pro podmíněná omezení; samotný název Big-M má více použití."),
+        tf("report-ani-extra-08", "jestli je CNF boolovska formule",
+            "Každá výroková formule v CNF je booleovská formule.", true,
+            "CNF je konjunkce klauzulí, z nichž každá je disjunkcí booleovských literálů. Jde tedy o speciální tvar booleovské formule. Nejde o tvrzení, že libovolná booleovská formule už syntakticky je v CNF nebo že převod na ekvivalentní CNF musí být malý."),
+        tf("report-ani-extra-09", "Pouziva tseitinova transformace pomocne promenne?",
+            "Tseitinova transformace obecné booleovské formule do CNF používá pomocné booleovské proměnné pro složené podformule.", true,
+            "Pro složenou podformuli zavedeme proměnnou z a přidáme konstantně mnoho klauzulí vyjadřujících z↔podformule. Navíc vynutíme pravdivost proměnné kořene. Výsledná CNF je ekvisplnitelná s původní formulí, ale má rozšířenou množinu proměnných. U triviální formule nebo vstupu, který už je CNF, lze transformaci zjednodušit; tvrzení popisuje standardní obecnou konstrukci."),
+        tf("report-ani-extra-10", "Lze prevest kazdou bool formuli na ekvisplnitelnou v linearnim case?",
+            "Každou booleovskou formuli nad obvyklými spojkami s omezenou aritou lze pomocí Tseitinovy transformace převést v lineárním čase na ekvisplnitelnou CNF, pokud dovolíme pomocné proměnné.", true,
+            "Ke každému uzlu syntaktického stromu přidáme nejvýše konstantně mnoho pomocných proměnných a klauzulí. Při n uzlech vznikne O(n) proměnných, klauzulí i výskytů literálů a konstrukce vyžaduje O(n) operací v běžném modelu práce se syntaxí a identifikátory. Kořenovou proměnnou musíme vynutit jako pravdivou. Výsledek zachovává splnitelnost; nepožaduje shodu pravdivostních funkcí nad totožnými proměnnými. Při explicitním bitovém počítání délky názvů proměnných závisí zápis a čas na zvoleném kódování.",
+            "V útržku chybí cíl převodu; z kontextu Tseitinovy transformace doplněna CNF. Pomocné proměnné nejsou zakázány. Lineární se vztahuje ke standardnímu syntaktickému modelu, ne k libovolnému bitovému kódování."),
+        tf("report-ani-extra-11", "Je vyraz x+y<=10 max(y+x^2) ILP",
+            "Úloha maximalizovat y+x² za podmínek x+y≤10 a x,y∈ℤ≥0 je ve svém uvedeném zápisu úlohou celočíselného lineárního programování (ILP).", false,
+            "Omezení x+y≤10 je lineární, ale účelová funkce y+x² obsahuje druhou mocninu proměnné, a proto není lineární. ILP vyžaduje lineární účelovou funkci i lineární omezení s celočíselnými proměnnými. Uvedený zápis je celočíselná kvadratická optimalizace. Na konečné doméně lze hledat ekvivalentní ILP reformulaci s dalšími proměnnými a omezeními; to z původního nelineárního zápisu přímo ILP nedělá.",
+            "Útržek spojuje omezení a maximalizaci bez uvedení domén. Doplněny nezáporné celočíselné domény; rozhodující překážkou linearity je x².")
+    ];
+
     global.reportedQuestionSets = {
         "report-2026-11-12-hulle": hulle,
-        "report-2026-11-11-wednesday": wednesday
+        "report-2026-11-11-wednesday": wednesday,
+        "report-ani-extra": aniCollection
     };
     global.reportedQuestionSetLabels = {
         "report-2026-11-12-hulle": "12. 11. · Hülle · rekonstrukce",
-        "report-2026-11-11-wednesday": "Středa 11. 11. · rekonstrukce"
+        "report-2026-11-11-wednesday": "Středa 11. 11. · rekonstrukce",
+        "report-ani-extra": "ANI · další studentská sbírka · rekonstrukce"
     };
 })(window);
