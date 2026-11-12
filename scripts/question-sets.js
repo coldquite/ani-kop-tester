@@ -11,6 +11,8 @@
     var pdfSections = global.kopPdfPrepSections || [];
     var pdfQuestions = global.kopPdfPrepQuestions || [];
     var pdfIds = pdfSections.map(function (section) { return section.id; });
+    var reportedSets = global.reportedQuestionSets || {};
+    var reportedLabels = global.reportedQuestionSetLabels || {};
     var lectureAssignments = {
     "1": {
         "assessment": [
@@ -352,6 +354,7 @@
     }
 
     function canonicalId(id) {
+        if (Object.prototype.hasOwnProperty.call(reportedSets, id)) return id;
         // Zpětná kompatibilita se starými odkazy ?set=assessment a ?set=exam.
         if (id === "assessment") return "midterm";
         if (pdfIds.indexOf(id) !== -1 || id === "pdf-all") return id;
@@ -364,6 +367,7 @@
 
     function getQuestions(setId) {
         var id = canonicalId(setId);
+        if (Object.prototype.hasOwnProperty.call(reportedSets, id)) return reportedSets[id].slice();
         if (id === "pdf-all") return pdfQuestions.slice();
         if (pdfIds.indexOf(id) !== -1) return pdfQuestions.filter(function (question) { return question.category === id; });
         if (id.indexOf("ai-lecture-") === 0) return aiQuestions(Number(id.substring(11)));
@@ -386,13 +390,13 @@
             var lectureMatch = /^lecture-(\d+)$/.exec(setId);
             var aiMatch = /^ai-lecture-(\d+)$/.exec(setId);
             var pdfMatch = pdfSections.filter(function (section) { return section.id === setId; })[0];
-            var title = pdfMatch ? pdfMatch.label
+            var title = reportedLabels[setId] || (pdfMatch ? pdfMatch.label
                 : setId === "pdf-all" ? "Z přípravy NI-KOP · všechny nové doplňkové otázky"
                 : aiMatch ? "AI-generated · P" + aiMatch[1] + " · " + lectureNames[Number(aiMatch[1]) - 1]
                 : setId === "ai-all" ? "AI-generated · všechny připravené přednášky"
                 : lectureMatch
                 ? "P" + lectureMatch[1] + " · " + lectureNames[Number(lectureMatch[1]) - 1]
-                : labels[setId];
+                : labels[setId]);
             if (title) option.textContent = title + " (" + count + ")";
             option.disabled = count === 0;
         });
@@ -409,6 +413,8 @@
         totalQuestions: sources.assessment.length + sources.exam.length,
         archivedQuestions: archive.length,
         aiGeneratedQuestions: [1, 2, 3, 4, 5, 6].reduce(function (sum, lecture) { return sum + aiQuestions(lecture).length; }, 0),
-        pdfPrepQuestions: pdfQuestions.length
+        pdfPrepQuestions: pdfQuestions.length,
+        reportedQuestions: Object.keys(reportedSets).reduce(function (sum, id) { return sum + reportedSets[id].length; }, 0)
     };
 })(window);
+

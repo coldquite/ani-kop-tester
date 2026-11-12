@@ -31,6 +31,19 @@ Aplikace je statická a lze ji nasadit pomocí GitHub Pages.
 - `scripts/exam/exam-questions-converted.js` – původní otázky ze sady Exam
 - `scripts/question-sets.js` – tematická klasifikace a výběr sad podle přednášek
 
+## Rekonstrukce ze studentských zpráv z listopadu 2026
+
+Dvě samostatné sady odpovídají dvěma zprávám z dodaného screenshotu:
+
+- **12. 11. · Hülle · rekonstrukce**: `?set=report-2026-11-12-hulle` — 14 otázek (6 otevřených, 8 T/F).
+- **Středa 11. 11. · rekonstrukce**: `?set=report-2026-11-11-wednesday` — 9 otázek (6 otevřených, 3 T/F).
+
+Obě sady fungují v testeru i v přehledu. Obsahují původní zaznamenaný útržek, rekonstruované české zadání, vzorovou odpověď nebo T/F klíč a vysvětlení. Nejde o doslovné oficiální zadání ani oficiální klíč. Nejasné varianty mají výslovné upřesnění; otázky závislé na otevřených hypotézách nepředstírají známou odpověď. Datum středeční sady je odvozeno z kontextu zprávy z 12. 11. 2026.
+
+Opakovaný dotaz na výstupní proměnné je záměrně v obou sadách. Neurčité „zbytek kombinace podmnožin, redukce či vlastností tříd“ není samostatné zadání a nebyly za něj domýšleny další položky. Nové sady se nepřimíchávají do historických ani AI-generated sad. Celkem jde o 23 položek / 22 témat, z toho 12 otevřených a 11 T/F.
+
+Zdroj dat: `scripts/reported-questions-2026-11.js`. [Mapování zpráv a poznámky k rekonstrukci](docs/reported-questions-2026-11.md).
+
 ## Doplněné otázky ze staršího PDF
 
 Soubor `NI-KOP uzavřené otázky.pdf` (36 stran; sbírka starých zápočtových a zkouškových otázek) byl tematicky porovnán s aktuálním bankem. Nové samostatné úlohy z **dynamického programování a globálních metod** patří do P12; otázky k **Tabu search**, které zdroj výslovně označuje jako vyřazené z předmětu, jsou ponechány **pouze v archivu**. Některé neúplné či nejasné varianty nebyly přidány; u přidaných položek je uvedeno číslo stránky a poznámka k případným odlišnostem od historického klíče.
@@ -72,3 +85,4 @@ Otázky obsahují číslo stránky historického dokumentu a upozornění na neo
 ### Obrázky v otázkách
 
 Historické PNG soubory v `assets/exam` jsou verzované přes Git LFS a v GitHub Pages se při přímém čtení mohou načítat jako textový ukazatel místo obrázku. `scripts/image-paths.js` přepíše adresy těchto obrázků na `media.githubusercontent.com` a zachová odkazy na původní GitHub soubory jako fallback při chybě načtení. Funguje v testu i v přehledu; nemění původní otázky ani soubory PNG.
+
